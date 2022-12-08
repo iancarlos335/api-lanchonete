@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
@@ -18,24 +19,37 @@ public class Salgado {
 	private long id;
 	
 	@Column(name = "nome_salgado")
+	@NotNull
 	private String nomeSalgado;
 	
 	@Column(name="valor")
 	@NumberFormat(style = Style.CURRENCY,pattern = "#.###,##")
+	@NotNull
 	private double valor;
 	
 	@Column(name="descricao")
 	private String descricao;
 	
+	@Column(name="imagem")
+	private String imagem;
+	
 	public Salgado() {}
 
-	public Salgado(String nomeSalgado, double valor, String descricao) {
+	public Salgado(String nomeSalgado, double valor, String descricao, String imagem) {
 		super();
 		this.nomeSalgado = nomeSalgado;
 		this.valor = valor;
 		this.descricao = descricao;
+		this.imagem = imagem;
 	}
 	
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
 
 	public String getDescricao() {
 		return descricao;

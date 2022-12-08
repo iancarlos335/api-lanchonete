@@ -32,7 +32,7 @@ public class FuncionarioController {
     private FuncionarioRepository funcionarioRepository;
 
     @GetMapping
-    public List<Funcionario> listPedidos() {
+    public List<Funcionario> listFuncionario() {
         return funcionarioRepository.findAll();
     }
 
@@ -44,8 +44,8 @@ public class FuncionarioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Funcionario addPedido(@RequestBody @Valid Funcionario funcionario) {
-        return funcionarioRepository.save(funcionario);
+    public Funcionario addFuncionario(@RequestBody @Valid Funcionario funcionarioDto) { //aqui ta estranho
+        return funcionarioRepository.save(funcionarioDto);
     }
 
     @PutMapping("/{id}")

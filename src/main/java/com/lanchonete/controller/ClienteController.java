@@ -23,13 +23,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lanchonete.model.Cliente;
 import com.lanchonete.repository.ClienteRepository;
 
-
 @RestController
 @CrossOrigin(origins="*", maxAge=3600)
-@RequestMapping("/cliente")
-
+@RequestMapping("/clientes") //Ta no singular aqui mas n faz sentido. Ou dx tudo no plural ou tudo no singular
 public class ClienteController {
-    
+	
+
     @Autowired
     private ClienteRepository clienteRepository;
     

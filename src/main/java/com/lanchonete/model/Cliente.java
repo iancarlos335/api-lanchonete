@@ -8,9 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Cliente")
+@Table(name = "clientes")
 public class Cliente {
-    @Id
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
@@ -69,5 +70,5 @@ public class Cliente {
     public void setEnderecoCliente(String enderecoCliente){
         this.enderecoCliente = enderecoCliente;
     }
-
+	
 }

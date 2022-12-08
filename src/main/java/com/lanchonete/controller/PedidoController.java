@@ -27,13 +27,13 @@ import com.lanchonete.repository.PedidoRepository;
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/pedidos")
-public class PedidosController {
+public class PedidoController {
 	@Autowired
 	private PedidoRepository pedidoRepository;
 	
 	
 	@GetMapping
-	public List<Pedido> listPedidos() {
+	public List<Pedido> listPedido() {
 		return pedidoRepository.findAll();
 	}
 	
