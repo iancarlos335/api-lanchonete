@@ -41,10 +41,7 @@ public class ClienteController {
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOnePedido(@PathVariable(name="id")long id) {
         Optional<Cliente> funcionarioOptional = clienteRepository.findById(id);
-        if (!funcionarioOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Funcionario not found");
-        }
-        return ResponseEntity.status(HttpStatus.OK).body(funcionarioOptional.get());
+        return funcionarioOptional.<ResponseEntity<Object>>map(cliente -> ResponseEntity.status(HttpStatus.OK).body(cliente)).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Funcionario not found"));
     }
     
     @PostMapping

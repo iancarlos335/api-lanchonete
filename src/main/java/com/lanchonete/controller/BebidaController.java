@@ -37,10 +37,7 @@ public class BebidaController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> getOneBebida(@PathVariable(name="id")long id) {
 		Optional<Bebida> bebidaOptional = bebidaRepository.findById(id);
-		if (!bebidaOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bebida not found");
-		}
-		return ResponseEntity.status(HttpStatus.OK).body(bebidaOptional.get());
+		return bebidaOptional.<ResponseEntity<Object>>map(bebida -> ResponseEntity.status(HttpStatus.OK).body(bebida)).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bebida not found"));
 	}
 	
 	
