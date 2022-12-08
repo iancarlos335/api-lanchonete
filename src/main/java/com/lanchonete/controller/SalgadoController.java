@@ -38,11 +38,8 @@ public class SalgadoController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> getOneSalgado(@PathVariable(name="id")long id) {
 		Optional<Salgado> salgadoOptional = salgadoRepository.findById(id);
-		if (!salgadoOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Salgado not found");
-		}
-		return ResponseEntity.status(HttpStatus.OK).body(salgadoOptional.get());
-	}
+        return salgadoOptional.<ResponseEntity<Object>>map(salgado -> ResponseEntity.status(HttpStatus.OK).body(salgado)).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Salgado not found"));
+    }
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)

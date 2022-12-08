@@ -38,11 +38,8 @@ public class DoceController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> getOneDoce(@PathVariable(name="id")long id) {
 		Optional<Doce> doceOptional = doceRepository.findById(id);
-		if (!doceOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Doce not found");
-		}
-		return ResponseEntity.status(HttpStatus.OK).body(doceOptional.get());
-	}
+        return doceOptional.<ResponseEntity<Object>>map(doce -> ResponseEntity.status(HttpStatus.OK).body(doce)).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Doce not found"));
+    }
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
