@@ -38,7 +38,7 @@ public class ClienteController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Object> getOnePedido(@PathVariable(name="id")long id) {
+	public ResponseEntity<?> getOnePedido(@PathVariable(name="id")long id) {
 		Optional<Cliente> funcionarioOptional = clienteRepository.findById(id);
         return funcionarioOptional.<ResponseEntity<Object>>map(cliente -> ResponseEntity.status(HttpStatus.OK).body(cliente)).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Funcionario not found"));
     }
@@ -50,7 +50,7 @@ public class ClienteController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> update(@PathVariable(name="id")long id, @RequestBody @Valid Cliente cliente){
+	public ResponseEntity<?> update(@PathVariable(name="id")long id, @RequestBody @Valid Cliente cliente){
 		Optional<Cliente> clienteOptional = clienteRepository.findById(id);
 		if (!clienteOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente not found");
@@ -64,7 +64,7 @@ public class ClienteController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> deletePedido(@PathVariable(name="id")long id) {
+	public ResponseEntity<?> deletePedido(@PathVariable(name="id")long id) {
 		Optional<Cliente> clienteOptional =clienteRepository.findById(id);
 		if (!clienteOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente not found");

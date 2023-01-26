@@ -35,7 +35,7 @@ public class BebidaController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Object> getOneBebida(@PathVariable(name="id")long id) {
+	public ResponseEntity<?> getOneBebida(@PathVariable(name="id")long id) {
 		Optional<Bebida> bebidaOptional = bebidaRepository.findById(id);
 		return bebidaOptional.<ResponseEntity<Object>>map(bebida -> ResponseEntity.status(HttpStatus.OK).body(bebida)).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bebida not found"));
 	}
@@ -50,7 +50,7 @@ public class BebidaController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> update(@PathVariable(name="id")long id, @RequestBody @Valid Bebida bebida){
+	public ResponseEntity<?> update(@PathVariable(name="id")long id, @RequestBody @Valid Bebida bebida){
 		Optional<Bebida> bebidaOptional = bebidaRepository.findById(id);
 		if (!bebidaOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bebida not found");
@@ -64,7 +64,7 @@ public class BebidaController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> delete(@PathVariable(name="id")long id) {
+	public ResponseEntity<?> delete(@PathVariable(name="id")long id) {
 		Optional<Bebida> bebidaOptional = bebidaRepository.findById(id);
 		if (!bebidaOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bebida not found");

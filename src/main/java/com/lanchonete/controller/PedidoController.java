@@ -38,7 +38,7 @@ public class PedidoController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Object> getOnePedido(@PathVariable(name="id")long id) {
+	public ResponseEntity<?> getOnePedido(@PathVariable(name="id")long id) {
 		Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
         return pedidoOptional.<ResponseEntity<Object>>map(pedido -> ResponseEntity.status(HttpStatus.OK).body(pedido)).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pedido not found"));
     }
@@ -52,7 +52,7 @@ public class PedidoController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> update(@PathVariable(name="id")long id, @RequestBody @Valid Pedido pedido){
+	public ResponseEntity<?> update(@PathVariable(name="id")long id, @RequestBody @Valid Pedido pedido){
 		Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
 		if (!pedidoOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pedido not found");
@@ -66,7 +66,7 @@ public class PedidoController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> deletePedido(@PathVariable(name="id")long id) {
+	public ResponseEntity<?> deletePedido(@PathVariable(name="id")long id) {
 		Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
 		if (!pedidoOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pedido not found");

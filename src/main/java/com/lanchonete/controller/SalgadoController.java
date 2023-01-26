@@ -37,7 +37,7 @@ public class SalgadoController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Object> getOneSalgado(@PathVariable(name="id")long id) {
+	public ResponseEntity<?> getOneSalgado(@PathVariable(name="id")long id) {
 		Optional<Salgado> salgadoOptional = salgadoRepository.findById(id);
         return salgadoOptional.<ResponseEntity<Object>>map(salgado -> ResponseEntity.status(HttpStatus.OK).body(salgado)).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Salgado not found"));
     }
@@ -51,7 +51,7 @@ public class SalgadoController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> update(@PathVariable(name="id")long id, @RequestBody @Valid Salgado salgado){
+	public ResponseEntity<?> update(@PathVariable(name="id")long id, @RequestBody @Valid Salgado salgado){
 		Optional<Salgado> salgadoOptional = salgadoRepository.findById(id);
 		if (!salgadoOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Salgado not found");
@@ -65,7 +65,7 @@ public class SalgadoController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> delete(@PathVariable(name="id")long id) {
+	public ResponseEntity<?> delete(@PathVariable(name="id")long id) {
 		Optional<Salgado> salgadoOptional = salgadoRepository.findById(id);
 		if (!salgadoOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Salgado not found");

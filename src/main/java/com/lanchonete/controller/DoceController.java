@@ -36,7 +36,7 @@ public class DoceController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Object> getOneDoce(@PathVariable(name="id")long id) {
+	public ResponseEntity<?> getOneDoce(@PathVariable(name="id")long id) {
 		Optional<Doce> doceOptional = doceRepository.findById(id);
         return doceOptional.<ResponseEntity<Object>>map(doce -> ResponseEntity.status(HttpStatus.OK).body(doce)).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Doce not found"));
     }
@@ -50,7 +50,7 @@ public class DoceController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> update(@PathVariable(name="id")long id, @RequestBody @Valid Doce doce){
+	public ResponseEntity<?> update(@PathVariable(name="id")long id, @RequestBody @Valid Doce doce){
 		Optional<Doce> doceOptional = doceRepository.findById(id);
 		if (!doceOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Doce not found");
@@ -64,7 +64,7 @@ public class DoceController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> delete(@PathVariable(name="id")long id) {
+	public ResponseEntity<?> delete(@PathVariable(name="id")long id) {
 		Optional<Doce> doceOptional = doceRepository.findById(id);
 		if (!doceOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Doce not found");

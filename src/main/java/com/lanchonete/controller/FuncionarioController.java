@@ -37,7 +37,7 @@ public class FuncionarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getOnePedido(@PathVariable(name = "id") long id) {
+    public ResponseEntity<?> getOnePedido(@PathVariable(name = "id") long id) {
         Optional<Funcionario> funcionarioOptional = funcionarioRepository.findById(id);
         return funcionarioOptional.<ResponseEntity<Object>>map(funcionario -> ResponseEntity.status(HttpStatus.OK).body(funcionario)).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Funcionario not found"));
     }
@@ -49,7 +49,7 @@ public class FuncionarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable(name = "id") long id,
+    public ResponseEntity<?> update(@PathVariable(name = "id") long id,
             @RequestBody @Valid Funcionario funcionario) {
         Optional<Funcionario> funcionarioOptional = funcionarioRepository.findById(id);
         if (!funcionarioOptional.isPresent()) {
@@ -64,7 +64,7 @@ public class FuncionarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deletePedido(@PathVariable(name = "id") long id) {
+    public ResponseEntity<?> deletePedido(@PathVariable(name = "id") long id) {
         Optional<Funcionario> funcionarioOptional = funcionarioRepository.findById(id);
         if (!funcionarioOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Funcionario not found");
