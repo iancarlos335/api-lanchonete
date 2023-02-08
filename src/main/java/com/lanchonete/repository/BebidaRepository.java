@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.lanchonete.model.Bebida;
 
+import java.util.List;
+
 @Repository
 public interface BebidaRepository extends JpaRepository<Bebida, Long>{
 
