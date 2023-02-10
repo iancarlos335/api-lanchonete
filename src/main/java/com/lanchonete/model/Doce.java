@@ -20,7 +20,7 @@ public class Doce {
 	
 	@Column(name = "nome_doce")
 	@NotNull
-	private String nomeDoce;
+	private String nome;
 	
 	@Column(name="valor")
 	@NumberFormat(style = Style.CURRENCY,pattern = "#.###,##")
@@ -35,28 +35,11 @@ public class Doce {
 	
 	public Doce() {}
 
-	public Doce(String nomeDoce, double valor, String descricao, String imagem) {
-		super();
-		this.nomeDoce = nomeDoce;
+	public Doce(String nome, double valor, String descricao, String imagem) {
+		this.nome = nome;
 		this.valor = valor;
 		this.descricao = descricao;
 		this.imagem = imagem;
-	}
-
-	public String getImagem() {
-		return imagem;
-	}
-
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
 	}
 
 	public long getId() {
@@ -67,12 +50,12 @@ public class Doce {
 		this.id = id;
 	}
 
-	public String getNomeDoce() {
-		return nomeDoce;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeDoce(String nomeDoce) {
-		this.nomeDoce = nomeDoce;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public double getValor() {
@@ -82,8 +65,20 @@ public class Doce {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-	
-	
-	
-	
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
 }

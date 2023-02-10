@@ -17,7 +17,7 @@ public class Funcionario {
 	
 	@Column(name = "nome_funcionario")
 	@NotNull
-	private String nomeFuncionario;
+	private String nome;
 	
 	@Column(name="imagem")
 	@NotNull
@@ -25,17 +25,8 @@ public class Funcionario {
 	
 	public Funcionario() {}
 
-	public Funcionario(String nomeFuncionario, String imagem) {
-		super();
-		this.nomeFuncionario = nomeFuncionario;
-		this.imagem = imagem;
-	}
-
-	public String getImagem() {
-		return imagem;
-	}
-
-	public void setImagem(String imagem) {
+	public Funcionario(String nome, String imagem) {
+		this.nome = nome;
 		this.imagem = imagem;
 	}
 
@@ -47,12 +38,19 @@ public class Funcionario {
 		this.id = id;
 	}
 
-	public String getNomeFuncionario() {
-		return nomeFuncionario;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeFuncionario(String nomeFuncionario) {
-		this.nomeFuncionario = nomeFuncionario;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
 }

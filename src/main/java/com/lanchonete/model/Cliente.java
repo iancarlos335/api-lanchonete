@@ -10,65 +10,59 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "clientes")
 public class Cliente {
-	
-	@Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "nome_cliente")
-    private String nomeCliente;
-    
+    private String nome;
+
     @Column(name = "cpf_cliente")
-    private String cpfCliente;
+    private String cpf;
 
     @Column(name = "endereco_cliente")
-    private String enderecoCliente;
+    private String endereco;
 
-    public Cliente(){
+    public Cliente() {
 
     }
 
-    public Cliente(String nomeCliente, String cpfCliente , String enderecoCliente){
-        super();
-        this.nomeCliente = nomeCliente;
-        this.cpfCliente = cpfCliente;
-        this.enderecoCliente = enderecoCliente;
+    public Cliente(String nome, String cpf, String endereco) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.endereco = endereco;
     }
 
-    //Get e Set CPF do Cliente 
-    public long getId(){
+    public long getId() {
         return id;
     }
 
-    public void setId(long id){
+    public void setId(long id) {
         this.id = id;
     }
 
-    //Get e Set nome do Cliente 
-    public String getNomeCliente(){
-        return nomeCliente;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeCliente(String nomeCliente){
-        this.nomeCliente = nomeCliente;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    //Get e Set CPF do Cliente 
-    public String getCpfCliente(){
-        return cpfCliente;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCpfCliente(String cpfCliente){
-        this.cpfCliente = cpfCliente;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    //Get e Set endereço do Cliente 
-    public String getEnderecoCliente(){
-        return enderecoCliente;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setEnderecoCliente(String enderecoCliente){
-        this.enderecoCliente = enderecoCliente;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
-	
 }

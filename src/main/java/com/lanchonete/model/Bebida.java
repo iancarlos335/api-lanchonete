@@ -12,77 +12,74 @@ import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
 @Entity
-@Table(name="bebidas")
-public class Bebida { //interessante
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
-	@Column(name = "nome_bebida")
-	@NotNull
-	private String nomeBebida;
-	
-	@Column(name="valor")
-	@NumberFormat(style = Style.NUMBER ,pattern = "#.###,##")
-	@NotNull
-	private double valor;
-	
-	@Column(name="descricao")
-	private String descricao;
-	
-	@Column(name="imagem")
-	private String imagem;
-	
-	public Bebida() {}
-	
-	public Bebida(String nomeBebida, double valor, String descricao, String imagem) {
-		super();
-		this.nomeBebida = nomeBebida;
-		this.valor = valor;
-		this.descricao = descricao;
-		this.imagem = imagem;
-	}
+@Table(name = "bebidas")
+public class Bebida {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
+    @Column(name = "nome_bebida")
+    @NotNull
+    private String nome;
 
-	public String getImagem() { //se eu n adicionar esse recurso de construção no get, eu n vou conseguir acessar pelo android
-		return imagem;
-	}
+    @Column(name = "valor")
+    @NumberFormat(style = Style.NUMBER, pattern = "#.###,##")
+    @NotNull
+    private double valor;
 
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
-	}
+    @Column(name = "descricao")
+    private String descricao;
 
-	public String getDescricao() {
-		return descricao;
-	}
+    @Column(name = "imagem")
+    private String imagem;
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public Bebida() {
+    }
 
-	public String getNomeBebida() {
-		return nomeBebida;
-	}
+    public Bebida(String nome, double valor, String descricao, String imagem) {
+        this.nome = nome;
+        this.valor = valor;
+        this.descricao = descricao;
+        this.imagem = imagem;
+    }
 
-	public void setNomeBebida(String nomeBebida) {
-		this.nomeBebida = nomeBebida;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public double getValor() {
-		return valor;
-	}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public void setValor(double valor) {
-		this.valor = valor;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public long getId() {
-		return id;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setId(long id) {
-		this.id = id;
-	}
-	
-	
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
 }
