@@ -32,10 +32,10 @@ public class SalgadoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Salgado addSalgado(@RequestBody @Valid Salgado salgadoDto) {
+    public ResponseEntity<?> addSalgado(@RequestBody @Valid Salgado salgadoDto) {
         Salgado salgado = new Salgado();
         BeanUtils.copyProperties(salgadoDto, salgado);
-        return salgadoRepository.save(salgado);
+        return ResponseEntity.status(HttpStatus.CREATED).body(salgadoRepository.save(salgado));
     }
 
     @PutMapping("/{id}")

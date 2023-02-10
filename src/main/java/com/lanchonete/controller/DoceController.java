@@ -32,10 +32,11 @@ public class DoceController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Doce addDoce(@RequestBody @Valid Doce doceDto) {
+    public ResponseEntity<?> addDoce(@RequestBody @Valid Doce doceDto) {
         Doce doce = new Doce();
         BeanUtils.copyProperties(doceDto, doce);
-        return doceRepository.save(doce);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(doceRepository.save(doce));
     }
 
     @PutMapping("/{id}")
