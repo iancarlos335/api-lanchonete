@@ -27,7 +27,8 @@ public class BebidaController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getOneBebida(@PathVariable(name = "id") long id) {
         Optional<Bebida> bebidaOptional = bebidaRepository.findById(id);
-        return bebidaOptional.<ResponseEntity<Object>>map(bebida -> ResponseEntity.status(HttpStatus.OK).body(bebida)).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bebida not found"));
+        return bebidaOptional.<ResponseEntity<Object>>map(bebida -> ResponseEntity.status(HttpStatus.OK).body(bebida))
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bebida not found"));
     }
 
     @PostMapping
@@ -60,6 +61,6 @@ public class BebidaController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bebida not found");
         }
         bebidaRepository.delete(bebidaOptional.get());
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); //Legal
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // Legal
     }
 }
